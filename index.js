@@ -39,8 +39,47 @@ function toggleColor(element) {
     element.style.color = "red"
   }
 }
+const header = document.querySelector("#header")
 
+header.addEventListener('click', function(e){
+  toggleColor(e.target)
+})
 
 /***** Deliverable 2 *****/
 
+const playerForm = document.querySelector("#new-player-form")
+
+playerForm.addEventListener('submit', function(e){
+  e.preventDefault()
+  const form = e.trget
+  
+  const player = {
+    number: "",
+    name: "Mo Salah",
+    nickname: "The Egyptian King",
+    photo: "https://cdn.cnn.com/cnnnext/dam/assets/190501145802-mo-salah-exlarge-169.jpg",
+    likes: 1000
+  }
+  debugger
+  player.number = e.target.number.value
+  player.name = e.target.name.value
+  player.nickname = e.target.nickname.value
+  player.photo = e.target.photo.value
+
+  renderPlayer(player)
+
+})
+
 /***** Deliverable 3 *****/
+
+function clickHandler() {
+  document.addEventListener('click', function (e) {
+    if (e.target.matches('.like-button')) {
+     const  likes = e.target.parentElement.querySelector(".likes")
+      const numberLikes = parseInt(likes.innerText, 10) +1
+      likes.innerText = `${numberLikes} Likes`
+    }
+  })
+}
+
+clickHandler()
